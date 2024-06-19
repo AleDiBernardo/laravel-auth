@@ -38,7 +38,7 @@
                                 <td>
                                     <div class="d-flex gap-2">
                                         <button class="btn btn-primary fw-bold text-light">More</button>
-                                        <button class="btn btn-warning fw-bold text-light">Edit</button>
+                                        <a href="{{ route('admin.projects.edit',['project'=>$curProject->id])  }}" class="btn btn-warning fw-bold text-light">Edit</a>
                                         <form action="{{ route('admin.projects.destroy', ['project' => $curProject->id]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')

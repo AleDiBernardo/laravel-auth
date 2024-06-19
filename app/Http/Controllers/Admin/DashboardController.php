@@ -9,7 +9,6 @@ use Illuminate\Http\Request;
 class DashboardController extends Controller
 {
     public function index() {
-        $projectsList = Project::all();
-        return view('admin.dashboard',compact('projectsList'));
+        return view('admin.dashboard');
     }
 }

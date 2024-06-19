@@ -7,7 +7,7 @@
                 <h1 class="fw-bold">Projects</h1>
                 
                 <div class="d-flex flex-column">
-                    <a href="http://" class="btn btn-primary fw-bold">Add New </a>
+                    <a href="{{route('admin.projects.create')}}" class="btn btn-primary fw-bold">Add New </a>
             <span class="fw-bold">Num of row: <?= count($projectsList)?> </span>
 
                 </div>
@@ -39,7 +39,12 @@
                                     <div class="d-flex gap-2">
                                         <button class="btn btn-primary fw-bold text-light">More</button>
                                         <button class="btn btn-warning fw-bold text-light">Edit</button>
-                                        <button class="btn btn-danger fw-bold">Delete</button>
+                                        <form action="{{ route('admin.projects.destroy', ['project' => $curProject->id]) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete this comic?')">Delete</button>
+                                        </form>
+                                        {{-- <button class="btn btn-danger fw-bold">Delete</button> --}}
                                     </div>
                                 </td>
                             </tr>

@@ -22,7 +22,7 @@ class ProjectController extends Controller
      */
     public function create()
     {
-        // return view('admin.create');
+        return view('admin.projects.create');
     }
 
     /**
@@ -30,7 +30,21 @@ class ProjectController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'title' => 'required|unique:projects|max:255',
+            'owner' => 'required|max:255',
+            'description' => 'nullable|max:255',
+            'slug' => 'required|unique:projects|max:255',
+        ]);
+
+        $project = new Project();
+        $project->title = $request->title;
+        $project->owner = $request->owner;
+        $project->description = $request->description;
+        $project->slug = $request->slug;
+        $project->save();
+
+        return redirect()->route('admin.projects.index');
     }
 
     /**
@@ -60,8 +74,9 @@ class ProjectController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(string $id)
+    public function destroy(Project $project)
     {
-        //
+        $project->delete();
+        return redirect()->route('admin.projects.index');
     }
 }

@@ -40,11 +40,11 @@
             <textarea class="form-control" id="description" name="description"></textarea>
         </div>
 
-        <div class="form-group">
-            <label for="slug">Slug:</label>
-            <input type="text" class="form-control" id="slug" name="slug" readonly required>
-            
+        <div>
+            <span>Slug:</span>
+            <p class="fw-bold" id="slug"></p>
         </div>
+        
 
         <button type="submit" class="btn btn-primary mt-2">Add</button>
         <a href="{{route('admin.projects.index')}}" class="btn btn-secondary mt-2">Cancel</a>

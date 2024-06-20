@@ -35,14 +35,13 @@ class ProjectController extends Controller
             'title' => 'required|unique:projects|max:255',
             'owner' => 'required|max:255',
             'description' => 'nullable|max:255',
-            'slug' => 'required|unique:projects|max:255',
         ]);
 
         $project = new Project();
         $project->title = $request->title;
         $project->owner = $request->owner;
         $project->description = $request->description;
-        $project->slug = $request->slug;
+        $project->slug = Str::slug($request->title);
         $project->save();
 
         return redirect()->route('admin.projects.index');
@@ -53,7 +52,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        // return view('ad')
+        return view('admin.projects.show',compact('project'));
     }
 
     /**

@@ -21,7 +21,7 @@
         </div>
     @endif
 
-    <form action="{{ route('admin.projects.update', $project->id) }}" method="POST">
+    <form action="{{ route('admin.projects.update', $project->slug) }}" method="POST">
         @csrf
         @method('PUT')
 
@@ -38,11 +38,6 @@
         <div class="form-group">
             <label for="description">Description:</label>
             <textarea class="form-control" id="description" name="description">{{ old('description', $project->description) }}</textarea>
-        </div>
-
-        <div class="form-group">
-            <label for="slug">Slug:</label>
-            <input type="text" class="form-control" id="slug" name="slug" value="{{ old('slug', $project->slug) }}" readonly>
         </div>
 
         <button type="submit" class="btn btn-primary mt-2">Update</button>
